@@ -35,8 +35,21 @@ class Quizz extends StatefulWidget {
 
 class _QuizzState extends State<Quizz> {
   List<Widget> scoreKeeper = [];
+  List<bool> answers = [
+    true,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true,
+    true,
+    false,
+    false
+  ];
   List<String> questions = [
-    "The blue whale is the biggest animal to have ever lived.",
+    "The blue whale is the biggest animal to have ever lived.T",
     "The hummingbird egg is the world's smallest bird egg.",
     "Bats are blind",
     "Infants have more bones than adults.",
@@ -52,7 +65,7 @@ class _QuizzState extends State<Quizz> {
   int index = 1;
   String text = "The blue whale is the biggest animal to have ever lived";
   String changeText() {
-    if (index <= 7) {
+    if (index < 12) {
       text = questions[index];
       index = index + 1;
       return text;
@@ -87,6 +100,11 @@ class _QuizzState extends State<Quizz> {
                 onPressed: () {
                   setState(() {
                     changeText();
+                    if (answers[index] == true) {
+                      scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                    } else {
+                      scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    }
                     //scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                   });
                 },
@@ -113,7 +131,11 @@ class _QuizzState extends State<Quizz> {
                 onPressed: () {
                   setState(() {
                     changeText();
-                    //scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    if (answers[index] == false) {
+                      scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                    } else {
+                      scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    }
                   });
                 },
                 child: Text(
