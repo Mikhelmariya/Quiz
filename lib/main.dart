@@ -6,7 +6,6 @@ void main() {
 
 class Quiz extends StatelessWidget {
   const Quiz({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -35,6 +34,8 @@ class Quizz extends StatefulWidget {
 }
 
 class _QuizzState extends State<Quizz> {
+  List<Widget> scoreKeeper = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,7 +54,11 @@ class _QuizzState extends State<Quizz> {
             child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.green)),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                  });
+                },
                 child: Text(
                   "True",
                   style: TextStyle(
@@ -64,7 +69,7 @@ class _QuizzState extends State<Quizz> {
           ),
         ),
         SizedBox(
-          height: 25,
+          height: 5,
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),
@@ -74,7 +79,11 @@ class _QuizzState extends State<Quizz> {
             child: ElevatedButton(
                 style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.red)),
-                onPressed: () {},
+                onPressed: () {
+                  setState(() {
+                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                  });
+                },
                 child: Text(
                   "False",
                   style: TextStyle(
@@ -83,6 +92,9 @@ class _QuizzState extends State<Quizz> {
                       fontWeight: FontWeight.bold),
                 )),
           ),
+        ),
+        Row(
+          children: scoreKeeper,
         )
       ],
     );
