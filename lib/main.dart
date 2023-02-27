@@ -35,13 +35,43 @@ class Quizz extends StatefulWidget {
 
 class _QuizzState extends State<Quizz> {
   List<Widget> scoreKeeper = [];
+  List<String> questions = [
+    "The blue whale is the biggest animal to have ever lived.",
+    "The hummingbird egg is the world's smallest bird egg.",
+    "Bats are blind",
+    "Infants have more bones than adults.",
+    "Taste buds can only be found on the tongue.",
+    "It took eight months from start to finish to produce the 1959 Disney film, Sleeping Beauty",
+    "Toy Story was Pixar\’s first movie.",
+    "Minnie Mouse\’s full name is Wilhelmina Mouse.",
+    "A potato was the first vegetable to be planted on the space shuttle.",
+    "The average human sneeze can be clocked at 100 miles an hour.T",
+    "Human skin regenerates every week.F",
+    "French fries originated from France.F"
+  ];
+  int index = 1;
+  String text = "The blue whale is the biggest animal to have ever lived";
+  String changeText() {
+    if (index <= 7) {
+      text = questions[index];
+      index = index + 1;
+      return text;
+    } else {
+      text = "Thank you for playing !!";
+      return text;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: 350,
+        Expanded(
+          child: Center(
+              child: Text(
+            text,
+            style: TextStyle(color: Colors.white, fontSize: 25),
+          )),
         ),
         SizedBox(
           height: 25,
@@ -56,7 +86,8 @@ class _QuizzState extends State<Quizz> {
                     backgroundColor: MaterialStateProperty.all(Colors.green)),
                 onPressed: () {
                   setState(() {
-                    scoreKeeper.add(Icon(Icons.check, color: Colors.green));
+                    changeText();
+                    //scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                   });
                 },
                 child: Text(
@@ -81,7 +112,8 @@ class _QuizzState extends State<Quizz> {
                     backgroundColor: MaterialStateProperty.all(Colors.red)),
                 onPressed: () {
                   setState(() {
-                    scoreKeeper.add(Icon(Icons.close, color: Colors.red));
+                    changeText();
+                    //scoreKeeper.add(Icon(Icons.close, color: Colors.red));
                   });
                 },
                 child: Text(
