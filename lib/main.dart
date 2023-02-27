@@ -35,11 +35,13 @@ class Quizz extends StatefulWidget {
 
 class _QuizzState extends State<Quizz> {
   List<Widget> scoreKeeper = [];
+  int ans = 0;
   List<bool> answers = [
     true,
     true,
     false,
     true,
+    false,
     false,
     true,
     false,
@@ -58,16 +60,18 @@ class _QuizzState extends State<Quizz> {
     "Toy Story was Pixar\’s first movie.",
     "Minnie Mouse\’s full name is Wilhelmina Mouse.",
     "A potato was the first vegetable to be planted on the space shuttle.",
-    "The average human sneeze can be clocked at 100 miles an hour.T",
-    "Human skin regenerates every week.F",
-    "French fries originated from France.F"
+    "The average human sneeze can be clocked at 100 miles an hour",
+    "Human skin regenerates every week.",
+    "French fries originated from France."
   ];
-  int index = 1;
+  int index = 0;
+
   String text = "The blue whale is the biggest animal to have ever lived";
   String changeText() {
-    if (index < 12) {
+    index = index + 1;
+    if (index <= 11) {
       text = questions[index];
-      index = index + 1;
+
       return text;
     } else {
       text = "Thank you for playing !!";
@@ -100,11 +104,13 @@ class _QuizzState extends State<Quizz> {
                 onPressed: () {
                   setState(() {
                     changeText();
-                    if (answers[index] == true) {
+                    print(answers[ans]);
+                    if (answers[ans] == true) {
                       scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                     } else {
                       scoreKeeper.add(Icon(Icons.close, color: Colors.red));
                     }
+                    ans++;
                     //scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                   });
                 },
@@ -131,11 +137,12 @@ class _QuizzState extends State<Quizz> {
                 onPressed: () {
                   setState(() {
                     changeText();
-                    if (answers[index] == false) {
+                    if (answers[ans] == false) {
                       scoreKeeper.add(Icon(Icons.check, color: Colors.green));
                     } else {
                       scoreKeeper.add(Icon(Icons.close, color: Colors.red));
                     }
+                    ans++;
                   });
                 },
                 child: Text(
