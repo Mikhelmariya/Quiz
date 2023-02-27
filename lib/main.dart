@@ -45,36 +45,44 @@ class _QuizzState extends State<Quizz> {
         SizedBox(
           height: 25,
         ),
-        SizedBox(
-          width: 200,
-          child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.green)),
-              onPressed: () {},
-              child: Text(
-                "True",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              )),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 35,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.green)),
+                onPressed: () {},
+                child: Text(
+                  "True",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                )),
+          ),
         ),
         SizedBox(
           height: 25,
         ),
-        SizedBox(
-          width: 200,
-          child: ElevatedButton(
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red)),
-              onPressed: () {},
-              child: Text(
-                "False",
-                style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 25,
-                    fontWeight: FontWeight.bold),
-              )),
+        Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: 35,
+            child: ElevatedButton(
+                style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.red)),
+                onPressed: () {},
+                child: Text(
+                  "False",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold),
+                )),
+          ),
         )
       ],
     );
